@@ -1,5 +1,7 @@
 package com.jamesdev.penguinphoto.data;
 
+import org.jsoup.Connection;
+
 /**
  * Created by Administrator on 14-6-29.
  */
@@ -9,6 +11,8 @@ public class ConnectionManager {
     public static final String BASE_URL = "http://127.0.0.1";
     public static final int TIMEOUT_MILLIS = 40 * 1000;
 
-    public static Connection
+    public static Connection anonConnection(String baseUrlExtension) {
+
+    }
 
 }
