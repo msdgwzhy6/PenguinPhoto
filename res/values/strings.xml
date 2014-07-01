@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PenguinPhoto</string>
+    <string name="take_photo">Take a photo</string>
+
+    <string name="log_db">Log database</string>
+    <string name="login">Login</string>
+    <string name="logging_in_">Logging in...</string>
+    <string name="register">Register</string>
+    <string name="forget_pwd">Forget password</string>
+    <string name="weibo_login">Weibo login</string>
+    <string name="qq_login">QQ login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="username_hint_text">Please input email</string>
+    <string name="nickname_hint_text">Please input nickname</string>
+    <string name="password_hint_text">Please input password</string>
+
+    <string name="sd_not_mount">SD Not Mount</string>
+    <string name="sd_error">SDError</string>
+</resources>

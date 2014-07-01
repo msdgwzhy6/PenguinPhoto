@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources  xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="Activity_Background">
+        <item name="android:background">#ffc1ced1</item>
+    </style>
+
+    <style name="Activity_User" parent="Activity_Background">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
+
+    <style name="EditText_Login">
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">#D4DBDD</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="TextView_Register">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@color/user_setting_button</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="FontText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="FontText.LoginButton">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/Activity_User"
+        android:paddingTop="10dp">
+    <EditText
+            android:id="@+id/editText_username"
+            android:inputType="textEmailAddress"
+            android:hint="@string/username_hint_text"
+            style="@style/EditText_Login"
+            android:layout_height="wrap_content"/>
+    <EditText android:id="@+id/editText_nickname"
+              android:hint="@string/nickname_hint_text"
+              android:maxLength="30"
+              style="@style/EditText_Login"
+            />
+    <EditText
+            android:id="@+id/editText_password"
+            android:hint="@string/password_hint_text"
+            android:password="true"
+            android:imeOptions="actionDone"
+            style="@style/EditText_Login"
+            />
+    <TextView
+            android:id="@+id/textView_register"
+            style="@style/TextView_Register"
+            android:layout_marginTop="10dp"
+            android:text="@string/register"
+            />
+</LinearLayout>
