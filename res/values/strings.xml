@@ -4,6 +4,10 @@
     <string name="take_photo">Take a photo</string>
 
     <string name="log_db">Log database</string>
+
+    <!-- LOGIN -->
+    <string name="login_success">Successfully logged in!</string>
+    <string name="login_failure">Login failed. Please check your network connection, username, and password, then try again.</string>
     <string name="login">Login</string>
     <string name="logging_in_">Logging in...</string>
     <string name="register">Register</string>
