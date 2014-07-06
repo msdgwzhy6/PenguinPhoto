@@ -10,7 +10,7 @@ import org.jsoup.Jsoup;
 public class ConnectionManager {
     private static final String TAG = ConnectionManager.class.getSimpleName();
 
-    public static final String BASE_URL = "http://127.0.0.1";
+    public static final String BASE_URL = "http://192.168.1.103:8000";
     public static final String ITEMS_URL = "/item?id=";
     public static final String THREADS_URL = "/threads?id=";
     public static final String SUBMISSIONS_URL = "/submitted?id=";
