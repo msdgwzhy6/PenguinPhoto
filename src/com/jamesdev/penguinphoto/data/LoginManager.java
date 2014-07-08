@@ -1,5 +1,7 @@
 package com.jamesdev.penguinphoto.data;
 
+import org.apache.http.HttpResponse;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,7 +27,13 @@ public class LoginManager {
             parmas.put("username", username);
             parmas.put("password", password);
 
-            ConnectionManager.doPost(LOGIN_URL_EXTENSION, parmas);
+            HttpResponse response = ConnectionManager.doPost(LOGIN_URL_EXTENSION, parmas);
+            if (null == response) {
+                return null;
+            }
+
+            String cookie = ConnectionManager.getCookieValue(response, USERNAME);
+            return cookie;
         } catch (Exception e) {
             e.printStackTrace();
         }
