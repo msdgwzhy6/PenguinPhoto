@@ -1,9 +1,8 @@
 package com.jamesdev.penguinphoto.loader;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.support.v4.content.AsyncTaskLoader;
-import com.jamesdev.penguinphoto.data.LoginManager;
+import com.jamesdev.penguinphoto.data.UserManager;
 import com.jamesdev.penguinphoto.data.UserPrefs;
 import com.jamesdev.penguinphoto.model.Result;
 
@@ -24,7 +23,7 @@ public class LoginLoader extends AsyncTaskLoader<Result> {
     public Result loadInBackground() {
         if (mUsername == null || mPassword == null) return Result.EMPTY;
 
-        String newCookie = LoginManager.login(mUsername, mPassword);
+        String newCookie = UserManager.login(mUsername, mPassword);
         boolean isSuccess = newCookie != null;
 
         if (isSuccess) {

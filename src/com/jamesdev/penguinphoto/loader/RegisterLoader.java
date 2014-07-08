@@ -1,11 +1,8 @@
 package com.jamesdev.penguinphoto.loader;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.support.v4.content.AsyncTaskLoader;
-import com.jamesdev.penguinphoto.data.ConnectionManager;
-import com.jamesdev.penguinphoto.data.LoginManager;
-import com.jamesdev.penguinphoto.data.RegisterManager;
+import com.jamesdev.penguinphoto.data.UserManager;
 import com.jamesdev.penguinphoto.model.Result;
 
 /**
@@ -31,7 +28,7 @@ public class RegisterLoader extends AsyncTaskLoader<Result> {
     @Override
     public Result loadInBackground() {
         if (mUsername == null || mEmail == null || mPassword == null) return Result.EMPTY;
-        String newCookie = RegisterManager.register(mUsername,mEmail, mPassword);
+        String newCookie = UserManager.register(mUsername, mEmail, mPassword);
         boolean isSuccess = newCookie != null;
 
         return isSuccess ? Result.SUCCESS : Result.FAILURE;
