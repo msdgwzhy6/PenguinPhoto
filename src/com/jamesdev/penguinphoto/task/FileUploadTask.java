@@ -3,8 +3,11 @@ package com.jamesdev.penguinphoto.task;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import com.jamesdev.penguinphoto.app.AppConfig;
 import com.jamesdev.penguinphoto.app.framework.BaseApplication;
+import com.jamesdev.penguinphoto.data.ConnectionManager;
+import com.jamesdev.penguinphoto.model.FormFile;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -12,12 +15,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 14-6-22.
  */
 public class FileUploadTask extends AsyncTask<Object, Integer, Void> {
-
+    private static final String TAG = "FileUploadTask";
     private ProgressDialog dialog = null;
     private Context context;
     HttpURLConnection connection = null;
@@ -51,96 +56,8 @@ public class FileUploadTask extends AsyncTask<Object, Integer, Void> {
 
     @Override
     protected Void doInBackground(Object... arg0) {
-
-        long length = 0;
-        int progress;
-        int bytesRead, bytesAvailable, bufferSize;
-        byte[] buffer;
-        int maxBufferSize = 256 * 1024;// 256KB
-
-        try {
-            FileInputStream fileInputStream = new FileInputStream(new File(
-                    pathToOurFile));
-
-            URL url = new URL(urlServer);
-            connection = (HttpURLConnection) url.openConnection();
-
-            // Set size of every block for post
-            connection.setChunkedStreamingMode(256 * 1024);// 256KB
-
-            // Allow Inputs & Outputs
-            connection.setDoInput(true);
-            connection.setDoOutput(true);
-            connection.setUseCaches(false);
-
-            // Enable POST method
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Connection", "Keep-Alive");
-            connection.setRequestProperty("Charset", "UTF-8");
-            connection.setRequestProperty("Content-Type",
-                    "multipart/form-data;boundary=" + boundary);
-
-            outputStream = new DataOutputStream(
-                    connection.getOutputStream());
-            outputStream.writeBytes(twoHyphens + boundary + lineEnd);
-            outputStream
-                    .writeBytes("Content-Disposition: form-data; name=\"uploadedfile\";filename=\""
-                            + pathToOurFile + "\"" + lineEnd);
-            outputStream.writeBytes(lineEnd);
-
-            bytesAvailable = fileInputStream.available();
-            bufferSize = Math.min(bytesAvailable, maxBufferSize);
-            buffer = new byte[bufferSize];
-
-            // Read file
-            bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-
-            while (bytesRead > 0) {
-                outputStream.write(buffer, 0, bufferSize);
-                length += bufferSize;
-                progress = (int) ((length * 100) / totalSize);
-                publishProgress(progress);
-
-                bytesAvailable = fileInputStream.available();
-                bufferSize = Math.min(bytesAvailable, maxBufferSize);
-                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-            }
-            outputStream.writeBytes(lineEnd);
-            outputStream.writeBytes(twoHyphens + boundary + twoHyphens
-                    + lineEnd);
-            publishProgress(100);
-
-            // Responses from the server (code and message)
-            int serverResponseCode = connection.getResponseCode();
-            String serverResponseMessage = connection.getResponseMessage();
-
-				/* 将Response显示于Dialog */
-            // Toast toast = Toast.makeText(UploadtestActivity.this, ""
-            // + serverResponseMessage.toString().trim(),
-            // Toast.LENGTH_LONG);
-            // showDialog(serverResponseMessage.toString().trim());
-				/* 取得Response内容 */
-            // InputStream is = connection.getInputStream();
-            // int ch;
-            // StringBuffer sbf = new StringBuffer();
-            // while ((ch = is.read()) != -1) {
-            // sbf.append((char) ch);
-            // }
-            //
-            // showDialog(sbf.toString().trim());
-
-            fileInputStream.close();
-            outputStream.flush();
-            outputStream.close();
-
-        } catch (Exception ex) {
-            // Exception handling
-            // showDialog("" + ex);
-            // Toast toast = Toast.makeText(UploadtestActivity.this, "" +
-            // ex,
-            // Toast.LENGTH_LONG);
-
-        }
+        File file = new File(pathToOurFile);
+        uploadFile(file);
         return null;
     }
 
@@ -156,6 +73,33 @@ public class FileUploadTask extends AsyncTask<Object, Integer, Void> {
             // TODO Auto-generated method stub
         } catch (Exception e) {
         }
+    }
+
+    /**
+     * 上传图片到服务器
+     *
+     * @param imageFile 包含路径
+     */
+    public void uploadFile(File imageFile) {
+        Log.i(TAG, "upload start");
+        try {
+            String requestUrl = "http://192.168.1.101:8083/upload/upload/execute.do";
+            //请求普通信息
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("username", "张三");
+            params.put("pwd", "zhangsan");
+            params.put("age", "21");
+            params.put("fileName", imageFile.getName());
+            //上传文件
+            FormFile formfile = new FormFile(imageFile.getName(), imageFile, "image", "application/octet-stream");
+
+            ConnectionManager.postFile(requestUrl, params, formfile);
+            Log.i(TAG, "upload success");
+        } catch (Exception e) {
+            Log.i(TAG, "upload error");
+            e.printStackTrace();
+        }
+        Log.i(TAG, "upload end");
     }
 
 }
