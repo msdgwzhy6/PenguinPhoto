@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PenguinPhoto</string>
-    <string name="take_photo">Take a photo</string>
+    <string name="take_photo">拍照</string>
 
-    <string name="log_db">Log database</string>
+    <string name="log_db">打印数据库数据</string>
 
     <!-- LOGIN -->
     <string name="login_success">Successfully logged in!</string>
     <string name="login_failure">Login failed. Please check your network connection, username, and password, then try again.</string>
-    <string name="login">Login</string>
+    <string name="login">登陆</string>
     <string name="logging_in_">Logging in...</string>
     <string name="register">Register</string>
     <string name="forget_pwd">Forget password</string>
@@ -22,7 +22,7 @@
 
     <string name="sd_not_mount">SD Not Mount</string>
     <string name="sd_error">SDError</string>
-    <string name="manage_photos">Manage photos</string>
-    <string name="edit">Edit</string>
-    <string name="save">Save</string>
+    <string name="manage_photos">管理照片</string>
+    <string name="edit">编辑</string>
+    <string name="save">保存</string>
 </resources>

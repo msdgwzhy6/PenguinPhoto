@@ -4,23 +4,34 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
         >
-    <Button
-            android:id="@+id/button_take_photo"
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/take_photo"/>
-    <Button
-            android:id="@+id/button_log_db"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/log_db"/>
-    <Button
-            android:id="@+id/button_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login"/>
+            android:orientation="horizontal">
+        <Button
+                android:id="@+id/button_take_photo"
+                android:layout_width="@dimen/common_button_width"
+                android:layout_height="@dimen/common_button_height"
+                android:text="@string/take_photo"/>
+
+        <Button
+                android:id="@+id/button_log_db"
+                android:layout_width="@dimen/common_button_width"
+                android:layout_height="@dimen/common_button_height"
+                android:text="@string/log_db"/>
+        <Button
+                android:id="@+id/button_login"
+                android:layout_width="@dimen/common_button_width"
+                android:layout_height="@dimen/common_button_height"
+                android:text="@string/login"/>
+        <Button
+                android:id="@+id/button_manage_photos"
+                android:layout_width="@dimen/common_button_width"
+                android:layout_height="@dimen/common_button_height"
+                android:text="@string/manage_photos"/>
+    </LinearLayout>
     <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/text_view_location"
             android:text="Hello World, MainActivity"

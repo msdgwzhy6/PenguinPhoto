@@ -1,7 +1,7 @@
 package com.jamesdev.penguinphoto.app;
 
 import android.content.Context;
-import com.jamesdev.penguinphoto.util.FileUtils;
+import com.jamesdev.penguinphoto.util.FileToolkit;
 import com.jamesdev.penguinphoto.util.EnvironmentUtils;
 
 import java.io.File;
@@ -26,8 +26,8 @@ public class AppConfig {
         sCacheFolderPath = sPenguinFolderPath + File.separator + CACHE_FOLDER_NAME;
 
         if (createFolder) {
-            FileUtils.createFolder(sPhotoFolderPath);
-            FileUtils.createFolder(sCacheFolderPath);
+            FileToolkit.createFolder(sPhotoFolderPath);
+            FileToolkit.createFolder(sCacheFolderPath);
         }
     }
 

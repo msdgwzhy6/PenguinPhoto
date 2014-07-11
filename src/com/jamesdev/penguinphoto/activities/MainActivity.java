@@ -92,6 +92,14 @@ public class MainActivity extends Activity implements AMapLocationListener, Loca
             }
         });
 
+        findViewById(R.id.button_manage_photos).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PhotoManageActivity.class);
+                startActivity(intent);
+            }
+        });
+
         mPickImageHelper = new PickImageHelper(this);
 
         mTextViewLocation = (TextView) findViewById(R.id.text_view_location);
